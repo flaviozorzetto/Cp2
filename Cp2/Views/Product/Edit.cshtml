@@ -1,0 +1,60 @@
+﻿@model Product;
+@{
+    ViewData["Title"] = "Edit de product";
+}
+
+<h1>Edição de produto</h1>
+
+<a asp-action="Index">Lista de produtos</a>
+
+<form asp-action="edit" class="d-flex flex-column gap-4 mt-4">
+
+    @await Html.PartialAsync("_ProductTextInput", null, new ViewDataDictionary (ViewData) 
+    {
+        {"Label", "Codigo"},
+        {"For", "Guid"},
+        {"Value", Model.Guid},
+        {"Type", "text"}
+    })
+
+    @await Html.PartialAsync("_ProductTextInput", null, new ViewDataDictionary (ViewData)
+    {
+        {"Label", "Nome"},
+        {"For", "Name"},
+        {"Value", Model.Name},
+        {"Type", "text"}
+    })
+
+    @await Html.PartialAsync("_ProductTextInput", null, new ViewDataDictionary (ViewData)
+    {
+        {"Label", "Descrição"},    
+        {"For", "Description"},
+        {"Value", Model.Description},
+        {"Type", "text"}
+    })
+
+    @await Html.PartialAsync("_ProductTextInput", null, new ViewDataDictionary (ViewData)
+    {
+        {"Label", "Preço"},
+        {"For", "Price"},
+        {"Value", Model.Price},
+        {"Type", "number"}
+    })
+
+    @await Html.PartialAsync("_ProductTextInput", null, new ViewDataDictionary (ViewData)
+    {
+        {"Label", "Quantidade"},
+        {"For", "Quantity"},
+        {"Value", Model.Quantity},
+        {"Type", "number"}
+    })
+
+    @await Html.PartialAsync("_ProductTextInput", null, new ViewDataDictionary (ViewData)
+    {
+        {"Label", "Tipo de Produto"},
+        {"For", "ProductType"},
+        {"Enum", Model.ProductType},
+        {"Type", "select"}
+    })
+
+</form>

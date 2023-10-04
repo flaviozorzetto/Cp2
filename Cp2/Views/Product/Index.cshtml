@@ -1,0 +1,58 @@
+﻿@model List<Product>
+
+@{
+    ViewData["Title"] = "Index de product";
+}
+
+<h1>Products</h1>
+
+<alert msg="@TempData["msg"]"></alert>
+
+<table class="table">
+    <tr>
+        <th>Codigo</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Tipo do Produto</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr class="align-middle">
+            <td>@item.Guid</td>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>@item.Price</td>
+            <td>@item.Quantity</td>
+            <td>@item.ProductType</td>
+            <td>
+                <a asp-action="edit" asp-route-guid="@item.Guid" class="btn btn-primary">Editar</a>
+                <button onclick="$('#modalForm').attr('action', '/Product/remove/@item.Guid')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Excluir
+                </button>
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="modal fade" tabindex="-1" id="exampleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmação de exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Deseja excluir o produto? <span id="itemKey"></span></p>
+            </div>
+            <div class="modal-footer">
+                <form method="post" id="modalForm">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                    <button type="submit" class="btn btn-primary">Sim</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

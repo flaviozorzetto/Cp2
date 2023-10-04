@@ -1,0 +1,10 @@
+﻿<div>
+    <label for="@ViewData["For"]">@ViewData["Label"]</label>
+    @if( (string) ViewData["Type"] == "select")
+    {
+        <select asp-for="@ViewData["Enum"]"> </select>
+    } else
+    {
+        <input for="@ViewData["For"]" value="@ViewData["Value"]" type="@ViewData["Type"]"/>
+    }
+</div>
