@@ -7,7 +7,7 @@ namespace CP2.Services
 {
     public class ProductService : IProductService
     {
-        private List<Product> _products = new List<Product> () { new Product () { Guid = Guid.NewGuid(), Name = "TesteN", Description = "TesteD", Price = 120, Quantity = 2, ProductType = ProductType.OUTRO } };
+        private List<Product> _products = new List<Product> ();
         public Product create(ProductDto productDto)
         {
             Product product = productDto.ToProduct();

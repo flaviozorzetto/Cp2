@@ -9,14 +9,6 @@
 
 <form asp-action="edit" class="d-flex flex-column gap-4 mt-4">
 
-    @await Html.PartialAsync("_ProductTextInput", null, new ViewDataDictionary (ViewData) 
-    {
-        {"Label", "Codigo"},
-        {"For", "Guid"},
-        {"Value", Model.Guid},
-        {"Type", "text"}
-    })
-
     @await Html.PartialAsync("_ProductTextInput", null, new ViewDataDictionary (ViewData)
     {
         {"Label", "Nome"},
@@ -49,12 +41,14 @@
         {"Type", "number"}
     })
 
-    @await Html.PartialAsync("_ProductTextInput", null, new ViewDataDictionary (ViewData)
+    @await Html.PartialAsync("_ProductTextInput", Model, new ViewDataDictionary (ViewData)
     {
         {"Label", "Tipo de Produto"},
         {"For", "ProductType"},
         {"Enum", Model.ProductType},
         {"Type", "select"}
     })
+
+    <button type="submit" class="btn btn-primary">Confirmar</button>
 
 </form>

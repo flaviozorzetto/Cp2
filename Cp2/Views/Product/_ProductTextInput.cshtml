@@ -1,10 +1,34 @@
-﻿<div>
-    <label for="@ViewData["For"]">@ViewData["Label"]</label>
-    @if( (string) ViewData["Type"] == "select")
+﻿@model Product
+@using CP2.Models
+@using CP2.Models.Enum
+
+<div>
+    @if( (string) ViewData["Type"] == "select" && (string) ViewData["For"] == "ProductType")
     {
-        <select asp-for="@ViewData["Enum"]"> </select>
+        <label asp-for="ProductType">Tipo de Produto</label>
+        <select asp-for="ProductType" asp-items="@Html.GetEnumSelectList<ProductType>()" class="form-select">
+            <option>Selecione</option>
+        </select>
     } else
     {
-        <input for="@ViewData["For"]" value="@ViewData["Value"]" type="@ViewData["Type"]"/>
+        <label for="@ViewData["For"]">@ViewData["Label"]</label>
+        @if (ViewData["Value"] != null)
+        {
+            <input 
+                name="@ViewData["For"]"
+                id="@ViewData["For"]"
+                for="@ViewData["For"]"
+                value="@ViewData["Value"]"
+                type="@ViewData["Type"]" 
+            />
+        } else
+        {
+            <input 
+                name="@ViewData["For"]" 
+                id="@ViewData["For"]" 
+                for="@ViewData["For"]" 
+                type="@ViewData["Type"]" 
+            />
+        }
     }
 </div>

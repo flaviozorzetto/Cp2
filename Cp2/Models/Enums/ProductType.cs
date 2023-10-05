@@ -2,6 +2,6 @@
 {
     public enum ProductType
     {
-        ALIMENTO,LIMPEZA,LAZER,OUTRO
+        ALIMENTO, LIMPEZA, LAZER, OUTRO
     }
 }
